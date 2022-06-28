@@ -29,7 +29,7 @@ label6 = Label(master, text = 'Control', relief = 'groove', width = 12)
 # Factor 8 Derivatives: An asset is less likely to be a security if it does not offer users derivatives or returns.
 label7 = Label(master, text = 'Derivatives', relief = 'groove', width = 12)
 # Factor 9 Commonality: An asset is less likely to be a security if it is not dedicated to the furtherance of a common enterprise.
-label8 = Label(master, text = 'Commonality', relief = 'groove', width = 12)
+label8 = Label(master, text = 'Open Source', relief = 'groove', width = 12)
 # Compliance Score provides a statistical measure of the likelyhood an asset is a security.
 # The statistical analysis is set such that 1.0 is least likely to be a security and 0.0 is most likely to be a security.
 label9 = Label(master, text = 'Compliance Score', relief = 'groove', width = 20)
