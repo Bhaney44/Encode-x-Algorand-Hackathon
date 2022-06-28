@@ -7,6 +7,11 @@ The problem is there is a lack of clarity in determining which digital assets ar
 
 Our project, the Choice Coin Compliance AI is an embedded system which formalizes human knowledge using natural language processing to statistically measure the probability that a particular asset is a security. The technology statistically measures digital assets on a scale of 0 to 1, where an asset with a score of 0 is almost certain to be considered a security and an asset with a score of 1 is almost certainly not a security. The goal for this software is to help asset creators on Algorand that do not wish create security tokens, engineer their assets to reduce regulatory risk and comply with the law. 
 
+# Algorithm
+
+<img width="618" alt="Screen Shot 2022-06-28 at 12 52 40 PM" src="https://user-images.githubusercontent.com/43055154/176272970-4aa2a6a8-e2ae-4918-b912-bd5bd227c5de.png">
+
+
 # Open Source
 
 This software is licensed under the [Apache License](https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon/blob/main/LICENSE).
