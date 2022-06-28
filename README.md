@@ -1,7 +1,7 @@
 # Encode-x-ATX-DAO-Austin-Hackathon
 This is a Repository for the [Encode x ATX DAO Austin Hackathon](https://www.encode.club/austin-hackathon). Our project is a compliance sutomation software for digital assets on [Algorand](https://www.algorand.com/). The project focus is securities compliance for DeFi.
 
-# Compliance for DeFi Digital Assets on Algorand
+# Compliance for DeFi on Algorand
 
 The problem is there is a lack of clarity in determining which digital assets are securities and which digital assets are not securities. Still, creating a culture of compliance is critical on Algorand to ensure value is created and captured in as cost-efficient manner as possible. Effective compliance is also a sterling method for ensuring a professional culture and stimulating the production of intellectual property and work product. Creating compliance protocols helps projects to reduce regulatory risk, promote professionalism, and stimulate cost-efficient business practices. In turn, these same benefits carry over to the layer-1 protocols on which projects are built, such as Algorand. 
 
