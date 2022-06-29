@@ -664,7 +664,7 @@ const complianceDetails =
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Investment:</p>
+                      <p>Is the asset intentionally sold as an investment?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option,index) => (
