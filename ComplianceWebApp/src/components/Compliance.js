@@ -18,7 +18,6 @@ const Compliance = () => {
 
  const isThereAddress = localStorage.getItem("address");
 
- 
   const algod_token = {
     "X-API-Key": ""
   }
@@ -38,6 +37,10 @@ const Compliance = () => {
 const complianceDetails =
   [
     {
+      value: "outstanding",
+      score: 1,
+    },
+    {
       value: "good",
       score: 0.75,
     },
@@ -46,16 +49,12 @@ const complianceDetails =
       score: 0.5,
     },
     {
-      value: "outstanding",
-      score: 1,
+      value: "marginal",
+      score: 0.25,
     },
     {
       value: "unacceptable",
       score: 0,
-    },
-    {
-      value: "marginal",
-      score: 0.25,
     },
   ]
 
@@ -590,9 +589,6 @@ const complianceDetails =
   //   return;
   // }
  
-    
-    
-    
     // if (walletType === "my-algo") {
     //   myAlgoSign();
     // } else if (walletType === "algosigner") {
