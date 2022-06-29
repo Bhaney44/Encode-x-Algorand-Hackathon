@@ -209,7 +209,7 @@
   font-family: 'Roboto Mono', monospace;
 }
 
-.amountToCommit input {
+.amountToCommit select {
   flex: 1;
   font-size: 15px;
   padding: 7px 12px;

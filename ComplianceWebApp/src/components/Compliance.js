@@ -651,17 +651,25 @@ const complianceDetails =
 
                 <div className="card_cand">
                 <div className="card_cand_hd">
-                    <div className="amountToCommit" style={{
-                      display : "flex",
-                      flexDirection: "column"
-                    }}>
-                      <p>Enter ASA Governance name:</p>
-                      <input
+                    <div className="amountToCommit"
+                    //  style={{
+                    //   display : "flex",
+                    //   flexDirection: "column"
+                    // }}
+                    >
+                      <p>Equity:</p>
+                      {/* <input
                         id="governance"
                         type="text"
                         placeholder='Governance'
                         className="amtToCommitInp"
-                      />
+                      /> */}
+                       <select value="">
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
                       
                     </div>
                   </div>
