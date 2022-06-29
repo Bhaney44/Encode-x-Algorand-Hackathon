@@ -1,5 +1,5 @@
 # Compliance Web App
-This is the frontend for compliance defi
+This is the frontend for the DeFi compliance software.
 
 
 ## Run Application On Your Local Machine
