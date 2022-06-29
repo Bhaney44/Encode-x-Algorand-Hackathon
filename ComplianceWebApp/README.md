@@ -1,18 +1,5 @@
-# Tita-Frontend
-This is the frontend of Tita, which is a choice coin asa payment gateway and governance scheduling.
-
-## TECHNOLOGIES & TOOLS
-- ReactJS
-- CSS
-- Tachyons
-- Axios
-- AlgoSDK
-
-
-## Requirements
-
-* NPM and Node installed, download [HERE](https://phoenixnap.com/kb/install-node-js-npm-on-windows)
-* [Create-React-app](https://reactjs.org/docs/create-a-new-react-app.html) must be installled
+# Compliance Web App
+This is the frontend for compliance defi
 
 
 ## Run Application On Your Local Machine
@@ -20,12 +7,12 @@ This is the frontend of Tita, which is a choice coin asa payment gateway and gov
 * git clone the repository
 
 ```
-  $ git clone https://github.com/samuellyworld/Tita-Frontend.git
+  $ git clone git@github.com:Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon.git
 ```
-* go into `Tita-Frontend` directory
+* go into `ComplianceWebApp` directory
 
 ```
- $ cd Tita-Frontend
+ $ cd ComplianceWebApp
 ```
 * install app dependencies
 ```
@@ -42,4 +29,4 @@ $ npm run dev
 
 ## LICENSE
 
-* [MIT](https://github.com/Samuellyworld/Tita-Frontend/blob/main/LICENSE)
+* [Apache](https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon/blob/main/LICENSE)
