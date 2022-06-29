@@ -7,7 +7,7 @@ This is the frontend for the DeFi compliance software.
 * git clone the repository
 
 ```
-  $ git clone git@github.com:Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon.git
+  $ git clone https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon.git
 ```
 * go into `ComplianceWebApp` directory
 
