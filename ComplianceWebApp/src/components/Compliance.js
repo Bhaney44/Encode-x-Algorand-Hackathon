@@ -664,7 +664,7 @@ const complianceDetails =
                         placeholder='Governance'
                         className="amtToCommitInp"
                       /> */}
-                       <select value="">
+                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map(option => (
                         <option value={option.score}>{option.value}</option>
@@ -675,63 +675,83 @@ const complianceDetails =
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Enter Choice Rewards:</p>
-                      <input
-                        id="rewards"
-                        type="number"
-                        min="500000"
-                        placeholder='500,000 $Choice'
-                        className="amtToCommitInp"
-                      />
+                      <p>Decentralization:</p>
+                      <select placeholder="Please select 1 option">
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="card_cand_hd">
+                    <div className="amountToCommit">
+                      <p>Participation:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="card_cand_hd">
+                    <div className="amountToCommit">
+                      <p>Investment:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
                       
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Enter Service Fee:</p>
-                      <input
-                        id="service"
-                        type="number"
-                        min="500"
-                        placeholder='500 $Algo'
-                        className="amtToCommitInp"
-                      />
-                    </div>
-                  </div>
-                  <div className="card_cand_hd">
-                    <div className="amountToCommit">
-                      <p>Enter Voting Issue:</p>
-                      <input
-                        id="issue"
-                        type="text"
-                        placeholder='Enter voting issue?'
-                        className="amtToCommitInp"
-                      />
+                      <p>Utility:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
                       
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Enter Option 1:</p>
-                      <input
-                        id="option-1"
-                        type="text"
-                       
-                        placeholder='Enter Option 1'
-                        className="amtToCommitInp"
-                      />
+                      <p>Purpose:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
                       
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Enter option 2:</p>
-                      <input
-                        id="option-2"
-                        type="text"
-                        placeholder='Enter Option 2'
-                        className="amtToCommitInp"
-                      />
+                      <p>Control:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
+                      
+                    </div>
+                  </div>
+                  <div className="card_cand_hd">
+                    <div className="amountToCommit">
+                      <p>Derivatives:</p>
+                      <select >
+                      <option disabled value="" >Please select 1 option</option>
+                      {complianceDetails.map(option => (
+                        <option value={option.score}>{option.value}</option>
+                      ))}
+                      </select>
                       
                     </div>
                   </div>
