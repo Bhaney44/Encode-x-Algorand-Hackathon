@@ -664,10 +664,10 @@ const complianceDetails =
                         placeholder='Governance'
                         className="amtToCommitInp"
                       /> */}
-                       <select >
+                       <select value={}>
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
@@ -678,8 +678,8 @@ const complianceDetails =
                       <p>Decentralization:</p>
                       <select placeholder="Please select 1 option">
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                     </div>
@@ -689,8 +689,8 @@ const complianceDetails =
                       <p>Participation:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                     </div>
@@ -700,8 +700,8 @@ const complianceDetails =
                       <p>Investment:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option,index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
@@ -712,8 +712,8 @@ const complianceDetails =
                       <p>Utility:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
@@ -724,8 +724,8 @@ const complianceDetails =
                       <p>Purpose:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
@@ -736,8 +736,8 @@ const complianceDetails =
                       <p>Control:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option, index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
@@ -748,8 +748,8 @@ const complianceDetails =
                       <p>Derivatives:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option => (
-                        <option value={option.score}>{option.value}</option>
+                      {complianceDetails.map(option,index => (
+                        <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
                       
