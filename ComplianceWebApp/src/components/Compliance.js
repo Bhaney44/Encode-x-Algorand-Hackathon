@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import algosdk from "algosdk";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "../styles/electionlist.css";
 import WalletConnect from "@walletconnect/client"; 
 import MyAlgoConnect from "@randlabs/myalgo-connect";
@@ -13,79 +13,25 @@ import { ASSET_ID} from "../constants";
 // import BottomNavigationBar from "../statics/BottomNavigationBar";
 import moment from "moment";
 import DatePicker from "react-datepicker";
-// import './styles/date-picker.css'
-// import {subDays} from 'react-datepicker';
+
 
 
 const Compliance = () => {
   const dispatch = useDispatch();
 
+ const isThereAddress = localStorage.getItem("address");
 
-  const [ASAdata, setASAdata] = useState("");
-  const [date, setDate] = useState("");
-
-  const isThereAddress = localStorage.getItem("address");
-
-  const [dateRange, setDateRange] = useState({
-    startDate: new Date(moment().startOf("isoweek").utc()),
-    endDate: new Date(moment().endOf("week").utc())
-  });
-
-  // let realDate;
-
-  useEffect(() => {
-    axios.get('https://tita-backend.herokuapp.com/data').then(response => {
-      // eslint-disable-next-line
-       response.data.data.map(asa => {
-            
-         if(asa.date === date) {
-            setASAdata(asa.date)
-            console.log("true")
-       }
-  
-      })
-
-    })
-  }, [date])
-  
-
-
-
-  const handleDateChange = (date) => {
-        const offset = date.getTimezoneOffset()
-   let yourDate = new Date(date.getTime() - (offset*60*1000))
-    setDateRange({ ...dateRange, startDate: yourDate }) 
-   setDate(yourDate.toISOString().split('T')[0])
-    
-   console.log(yourDate.toISOString().split('T')[0])
-
-   
-  
-  }
-
-
+ 
   const algod_token = {
-    "X-API-Key": "z6H94GE3sI8w100S7MyY92YMK5WIPAmD6YksRDsC"
+    "X-API-Key": ""
   }
-  const algod_address = "https://mainnet-algorand.api.purestake.io/ps2";
+  const algod_address = "";
   const headers = "";
 
   const algodClient = new algosdk.Algodv2(algod_token, algod_address, headers);
   const walletType = localStorage.getItem("wallet-type");
-  const rewardsAddress = 'ZW4E323O6W3JTTVCDDHIF6EY75HSU56H7AGD3UZI54XCQOMNRCWRTYP5PQ'
-  const serviceAddress = 'WIOAXYVLJ6YQXS6RI2ROHXHQAKGYND56BY2A5O7ZV3C7GLRR2FCLIIR7VM'
  
  
-
-  const election_data = [
-    {
-
-      card_desc:
-        "Tita is Choice Coin Payment Gateway For ASA Governance And Checking Governance Scheduling Dates",
-      process_image: "https://i.postimg.cc/yNxZcP9m/km-20220401-480p-1-1.gif",
-      title: "TITA: ASA Governance Gateway",
-    },
-  ];
 
  
 
@@ -551,7 +497,7 @@ const Compliance = () => {
     }
   };
 
-  const makePayment = () => {
+  const calculate = () => {
 
         
 
@@ -662,9 +608,7 @@ const Compliance = () => {
         </div>
 
         <ul className="card_list">
-          {election_data?.map((slug, index) => {
-            return (
-              <div className="card_cont" key={index}>
+              <div className="card_cont">
                 <div className="card_r1">
                   <div
                     style={{
@@ -673,21 +617,11 @@ const Compliance = () => {
                       alignItems: "center",
                     }}
                   >
-                    {/* <div className="card_elt_img">
-                      {slug.process_image ? (
-                        <img src={slug.process_image} alt="" />
-                      ) : (
-                        <i
-                          className="uil uil-asterisk"
-                          style={{ paddingLeft: "2px", paddingBottom: "2px" }}
-                        />
-                      )}
-                    </div> */}
-                    <div className="card_elt_tit">{slug.title}</div>
+                    <div className="card_elt_tit">Compliance for DeFi on Algorand</div>
                   </div>
                 </div>
 
-                <div className="card_elt_desc">{slug?.card_desc}</div>
+                <div className="card_elt_desc">the Choice Coin Compliance AI is an embedded system which formalizes human knowledge using natural language processing to statistically measure the probability that a particular asset is a security</div>
                 <div className="voting_ends">Calculate your digital assets compliance!
                 </div>
 
@@ -766,28 +700,7 @@ const Compliance = () => {
                       
                     </div>
                   </div>
-                  <div className="card_cand_hd">
-                    <div className="amountToCommit">
-                      <p>Date For Governance:</p>
-                      {/* <input
-                        id="date"
-                        type="date"
-                        placeholder=''
-                        className="amtToCommitInp"
-                      /> */}
-                       <DatePicker 
-                          // excludeDates={[(new Date("2022-04-11")),  subDays(new Date("2022-04-18")),  subDays(new Date("2022-04-25"))]}
-                          excludeDates={[(new Date("2022-04-11")), (new Date("2022-04-18")),(new Date("2022-04-25")) ]}
-                          selected={date && new Date(dateRange.startDate)}
-                          onChange={handleDateChange}
-                          name="startDate"
-                          filterDate={(date) => date.getDay() === 1 }
-                          placeholderText="Monday📆"
-                          
-                        />
-             
-                    </div>
-                  </div>
+
 
                   <div className="vote_collap">
 
@@ -795,17 +708,15 @@ const Compliance = () => {
                       <button
                         className="record_vote"
                         onClick={() => {
-                          makePayment();
+                          calculate();
                         }}
                       >
-                        Make Payment <i className="uil uil-wallet"></i>
+                        Calculate <i className="uil uil-filter"></i>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-            );
-          })}
         </ul>
       </div>
       {/* <BottomNavigationBar txt="Check schedule?"/> */}
