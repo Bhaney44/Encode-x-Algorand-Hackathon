@@ -1,5 +1,3 @@
-
-
 import axios from "axios";
 import algosdk from "algosdk";
 // import { useEffect, useState } from "react";
@@ -14,8 +12,6 @@ import { useState } from "react";
 // import BottomNavigationBar from "../statics/BottomNavigationBar";
 // import moment from "moment";
 // import DatePicker from "react-datepicker";
-
-
 
 const Compliance = () => {
   const dispatch = useDispatch();
@@ -38,7 +34,6 @@ const Compliance = () => {
     setSelectDefault(e.target.value)
     console.log(e.target.value)
   }
- 
  
 const complianceDetails =
   [
@@ -64,10 +59,6 @@ const complianceDetails =
     },
   ]
 
- 
-
-  
-
   // const myAlgoSign = async () => {
 
   //   // const RewardsInchoice = document.getElementById('rewards').value
@@ -77,7 +68,6 @@ const complianceDetails =
   //   // const governanceOption1 = document.getElementById('option-1').value
   //   // const governanceOption2 = document.getElementById('option-2').value
   
-
   //   const myAlgoWallet = new MyAlgoConnect({ shouldSelectOneAccount: false });
 
   //   try {
@@ -99,7 +89,6 @@ const complianceDetails =
   //    //get algo balance of the ASA
   //     const algoBalance = myAccountInfo.amount/1000000;
 
-     
   //     // check if the voter address has Choice
   //     const containsChoice = myAccountInfo.assets
   //       ? myAccountInfo.assets.some(
@@ -107,8 +96,6 @@ const complianceDetails =
   //         )
   //       : false;
              
-     
-
   //     // if the address has no ASAs
   //     if (myAccountInfo.assets.length === 0) {
   //       dispatch({
@@ -145,7 +132,6 @@ const complianceDetails =
   //     return;
   //   }
 
-  
   //     const suggestedParams = await algodClient.getTransactionParams().do();
      
   //     const amountToSend = RewardsInchoice * 100;
@@ -171,16 +157,12 @@ const complianceDetails =
 
   //     let Txns = [txn1.toByte(), tnx2.toByte()]
 
-      
-
   //     const signedTxn = await myAlgoWallet.signTransaction(Txns);
   //     const SignedTx = signedTxn.map((txn) => {
   //       return txn.blob;
   //     });
 
   //     console.log(SignedTx)
-
-      
 
   //     const resp = await algodClient.sendRawTransaction(SignedTx).do();
   //     if(resp) {
@@ -235,7 +217,6 @@ const complianceDetails =
 
   //   try {
  
-
   //       const address = !!isThereAddress && isThereAddress 
 
   //       const myAccountInfo = await algodClient
@@ -302,7 +283,6 @@ const complianceDetails =
   //       const amountToSend = RewardsInchoice * 100;
   //       const amountInAlgo = ServiceInAlgo * 1000000;
     
-
   //       const txn1 = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
   //         from: address,
   //         to: rewardsAddress,
@@ -329,14 +309,12 @@ const complianceDetails =
   //         });
   //       })
 
-
   //       const signedTxn = await window.AlgoSigner.signTxn(Txns);
 
   //       const SignedTx = signedTxn.map((txn) => {
   //         return  window.AlgoSigner.encoding.base64ToMsgpack(txn.blob);
   //       });
      
-
   //       const resp = await algodClient
   //         .sendRawTransaction(SignedTx).do();
 
@@ -414,8 +392,6 @@ const complianceDetails =
   //         )
   //       : false;
 
-        
-
   //     if (myAccountInfo.assets.length === 0) {
   //       alert("You need to opt-in to Choice Coin in your Wallet to process payment reward.");
   //       return;
@@ -474,7 +450,6 @@ const complianceDetails =
   //       })
   //     })
 
-
   //     const requestParams = [Txns];
 
   //     const request = formatJsonRpcRequest("algo_signTxn", requestParams);
@@ -484,7 +459,6 @@ const complianceDetails =
   //       return element ? new Uint8Array(Buffer.from(element, "base64")) : null;
   //     });
 
-   
   //   const resp = await algodClient.sendRawTransaction(decodedResult).do();
 
   //   if(resp) {
@@ -530,12 +504,10 @@ const complianceDetails =
 
   const calculate = () => {
 
-        
-
     if(!isThereAddress) {
       dispatch({
         type: "alert_modal",
-        alertContent: "Kindly Connect Wallet To Make Payment.",
+        alertContent: "Connect wallet to make payment.",
       });
       return;
   } 
@@ -631,7 +603,6 @@ const complianceDetails =
    
   };
 
-
   return (
     <div className="ptt_elt">
       <div className="ptt_elt_inn">
@@ -653,16 +624,13 @@ const complianceDetails =
                   </div>
                 </div>
 
-                <div className="card_elt_desc">the Choice Coin Compliance AI is an embedded system which formalizes human knowledge using natural language processing to statistically measure the probability that a particular asset is a security</div>
-                <div className="voting_ends">Calculate your digital assets compliance!
-                </div>
-
+                <div className="card_elt_desc">The Choice Coin Compliance AI is an embedded system which formalizes human knowledge using natural language processing to statistically measure the probability that a particular asset may be considered a security.</div>
+                <div className="voting_ends">Calculate your digital assets compliance.</div>
                 <div className="card_cand">
                 <div className="card_cand_hd">
                     <div className="amountToCommit"
                     >
-                      <p>Equity:</p>
-              
+                      <p>Does the asset represent an equity interest in a company?</p>
                        <select defaultValue={selectDefault} onChange={handleSelectChange}>
                       <option disabled value="default" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
@@ -674,7 +642,7 @@ const complianceDetails =
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Decentralization:</p>
+                      <p>How decentralized is the asset?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
@@ -685,7 +653,7 @@ const complianceDetails =
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Participation:</p>
+                      <p>Do users actively participate in the network?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
@@ -703,58 +671,52 @@ const complianceDetails =
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
-                      
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Utility:</p>
+                      <p>Does the asset have utility?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
-                      
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Purpose:</p>
+                      <p>Does the asset have an intended purpose?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
-                      
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Control:</p>
+                      <p>Does the asset give users control in decesion making for a network?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
-                      
                     </div>
                   </div>
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
-                      <p>Derivatives:</p>
+                      <p>Does the asset offer financial derivatives?</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
                       {complianceDetails.map((option,index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
-                      
                     </div>
                   </div>
-
 
                   <div className="vote_collap">
 
