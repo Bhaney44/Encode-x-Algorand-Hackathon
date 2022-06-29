@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { formatJsonRpcRequest } from "@json-rpc-tools/utils";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
 import { ASSET_ID} from "../constants";
+import { useState } from "react";
 // import BottomNavigationBar from "../statics/BottomNavigationBar";
 // import moment from "moment";
 // import DatePicker from "react-datepicker";
@@ -30,6 +31,13 @@ const Compliance = () => {
 
   const algodClient = new algosdk.Algodv2(algod_token, algod_address, headers);
   const walletType = localStorage.getItem("wallet-type");
+
+  const [selectDefault, setSelectDefault] = useState("default")
+
+  const handleSelectChange = (e) => {
+    setSelectDefault(e.target.value)
+    console.log(e.target.value)
+  }
  
  
 const complianceDetails =
@@ -652,21 +660,12 @@ const complianceDetails =
                 <div className="card_cand">
                 <div className="card_cand_hd">
                     <div className="amountToCommit"
-                    //  style={{
-                    //   display : "flex",
-                    //   flexDirection: "column"
-                    // }}
                     >
                       <p>Equity:</p>
-                      {/* <input
-                        id="governance"
-                        type="text"
-                        placeholder='Governance'
-                        className="amtToCommitInp"
-                      /> */}
-                       <select value={}>
-                      <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+              
+                       <select defaultValue={selectDefault} onChange={handleSelectChange}>
+                      <option disabled value="default" >Please select 1 option</option>
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -676,9 +675,9 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Decentralization:</p>
-                      <select placeholder="Please select 1 option">
+                      <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -689,7 +688,7 @@ const complianceDetails =
                       <p>Participation:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -700,7 +699,7 @@ const complianceDetails =
                       <p>Investment:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option,index => (
+                      {complianceDetails.map((option,index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -712,7 +711,7 @@ const complianceDetails =
                       <p>Utility:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -724,7 +723,7 @@ const complianceDetails =
                       <p>Purpose:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -736,7 +735,7 @@ const complianceDetails =
                       <p>Control:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option, index => (
+                      {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
@@ -748,7 +747,7 @@ const complianceDetails =
                       <p>Derivatives:</p>
                       <select >
                       <option disabled value="" >Please select 1 option</option>
-                      {complianceDetails.map(option,index => (
+                      {complianceDetails.map((option,index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
                       </select>
