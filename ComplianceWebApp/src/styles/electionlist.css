@@ -192,6 +192,21 @@
   /* padding: 10px; */
 }
 
+.v_inp_cov {
+  width: calc(50% - 10px);
+  margin: 0px 0px 25px;
+}
+
+.inpCont_cand {
+  width: 100%;
+}
+
+.check {
+  display: flex;
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
 .amountToCommit p {
   /* margin-right: 20px; */
   font-size: 13px;
@@ -494,4 +509,16 @@ input:invalid {
 .addrDisplayInn {
 margin-right: -13px !important;
 font-size: 10px !important;
+}
+
+.conditions {
+  margin-right: 66px;
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 400px) {
+ .conditions{
+   margin-right: 33px;
+ }
+ 
 }
