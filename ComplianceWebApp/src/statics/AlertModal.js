@@ -6,7 +6,7 @@ const AlertModal = () => {
 
   const dispatch = useDispatch();
 
-  const { openModal, modalContent } = useSelector(
+  const { openModal, modalContent,percentage } = useSelector(
     (state) => state.status.alertModal
   );
 
@@ -65,12 +65,13 @@ const AlertModal = () => {
                 alignItems: "center",
               }}
             >
+             
               <p
                 style={{
                   opacity: 0.7,
                   fontWeight: "500",
                   margin: "0px 0px 20px",
-                  padding: "15px 10px 15px 2px",
+                  padding: "14px 10px 7px 2px",
                   textTransform: "uppercase",
                   borderBottom: `2px solid ${darkTheme ? "var(--l1)" : "#222"}`,
                   display: "flex",
@@ -88,7 +89,13 @@ const AlertModal = () => {
                  marginRight: "5px"
                }}> Result</span> 
               </p>
-              <p
+            <div style={{
+              display: "flex",
+              textAlign: "left",
+              justifyContent: "left",
+              flexDirection: "column"
+            }}>
+            <p
                 style={{
                   opacity: 0.7,
                   textAlign: "center",
@@ -98,6 +105,47 @@ const AlertModal = () => {
               >
                 {modalContent}
               </p>
+
+
+              <p style={{
+                  opacity: 0.7,
+                marginTop: "-5px",
+                lineHeight: "25px",
+              }}> 
+                Percentage : <span
+                  style={{
+                    color: percentage < 30 ? "red" : "#09b109"
+                  }}       
+                >
+                  {percentage}% 
+
+                </span>
+                
+                {/* {
+                  percentage < 30 ? (<i 
+                     style={{}}
+                    class="uil uil-thumbs-down"></i>) 
+                  : (<i 
+                      style={{
+                        marginRight: "3px",
+                        color: "yellow"
+                      }}
+                    class="uil uil-thumbs-up"> </i>)
+                } */}
+              </p>
+
+              <a
+               href=""
+               style={{
+                opacity: 0.7,
+                lineHeight: "25px",
+                color:"blue",
+                marginBottom: "10px",
+              }}>
+                view on algoexplorer <i className="uil uil-arrow-up-right"></i>
+              </a>
+            </div>
+          
             </div>
           </>
         </div>
