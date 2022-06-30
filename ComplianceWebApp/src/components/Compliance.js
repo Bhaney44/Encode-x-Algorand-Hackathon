@@ -37,6 +37,8 @@ const Compliance = () => {
   const [financialValue, setFinancialValue] = useState("default")
   // const [selectDefault, setSelectDefault] = useState("default")
 
+  const [minimumChoice, setMinimumChoice] = useState(undefined);
+
   const handleEquityChange = (e) => {
     setEquityValue(e.target.value)
     console.log(e.target.value)
@@ -894,6 +896,20 @@ const complianceDetails =
                       </select>
                     </div>
                   </div>
+
+                  <div className="v_inp_cov inpCont_cand">
+              {/* <p>Conversion Fee</p> */}
+              <p className="check">
+              <input
+                style={{cursor : "pointer"}}
+                className="checkbox"
+                type="checkbox"
+                value={minimumChoice}
+                onClick={() => setMinimumChoice(5)}
+              />
+               <span className="conditions" style={{fontSize : "13px"}}>Accept 5<span><img src="https://i.postimg.cc/mDtpdjqh/logo.png" style={{width : '13px', marginTop : '0px', marginLeft : '2px'}} alt="logo"/> </span> is required to calculate asset compliance score</span>
+              </p>
+            </div>
 
                   <div className="vote_collap">
 
