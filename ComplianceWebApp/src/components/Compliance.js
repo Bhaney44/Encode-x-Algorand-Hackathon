@@ -539,17 +539,27 @@ const complianceDetails =
 
   const calculate = () => {
 
-  //   if(!isThereAddress) {
-  //     dispatch({
-  //       type: "alert_modal",
-  //       alertContent: "Connect wallet to make payment.",
-  //     });
-  //     return;
-  // } 
+    if(!isThereAddress) {
+      dispatch({
+        type: "form_alert",
+        alertContent: "Connect wallet to calculate compliance score.",
+      });
+
+      setTimeout(() => {
+        dispatch({
+          type: "close_alert",
+        });
+        dispatch({
+          type: "close_wallet",
+        });
+      }, 1500)
+      return
+     
+  } 
 
   const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
   const assetData = console.log(result ** (1/8)) 
-  //  if(selectDefault == "default") {
+  //  if(utilityValue == "default" || ) {
   //        dispatch({
   //       type: "alert_modal",
   //       alertContent: ".",

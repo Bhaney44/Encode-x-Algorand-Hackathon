@@ -7,6 +7,7 @@ const status = (
     electModal: { openElectModal: false, modalData: null },
     voteModal: { openModalVote: false, voteData: null },
     confirmWallet: { openWallet: false, walletContent: ""},
+    formAlert: {formAlert: false, alertContent: ""},
     addressNum: 0,
     address: null,
     balance : 0
@@ -41,6 +42,11 @@ const status = (
   
       case "close_wallet" :
         return {...state, confirmWallet : {openWallet : false, walletContent : ""} };
+        
+      case "form_alert" :
+        return {...state, formAlert: {formAlert: true, alertContent: action.alertContent}};
+      case "close_alert" :
+        return { ...state, formAlert : {formAlert: false, alertContent : ""}};
 
     default:
       return state;
