@@ -539,26 +539,25 @@ const complianceDetails =
 
   const calculate = () => {
 
-    if(!isThereAddress) {
-      dispatch({
-        type: "form_alert",
-        alertContent: "Connect wallet to calculate compliance score.",
-      });
+  //   if(!isThereAddress) {
+  //     dispatch({
+  //       type: "form_alert",
+  //       alertContent: "Connect wallet to calculate compliance score.",
+  //     });
 
-      setTimeout(() => {
-        dispatch({
-          type: "close_alert",
-        });
-        dispatch({
-          type: "close_wallet",
-        });
-      }, 1500)
-      return
+  //     setTimeout(() => {
+  //       dispatch({
+  //         type: "close_alert",
+  //       });
+  //       dispatch({
+  //         type: "close_wallet",
+  //       });
+  //     }, 1500)
+  //     return
      
-  } 
+  // } 
 
-  // const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
-  // const assetData = console.log(result ** (1/8)) 
+  
   //  if(utilityValue == "default" || equityValue == "default" || purposeValue == "default" || decentralizationValue == "default" ) {
   //        dispatch({
   //       type: "alert_modal",
@@ -568,7 +567,7 @@ const complianceDetails =
   //  }
 
 
-  else if(equityValue == "default") {
+ if(equityValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for equity interest..",
@@ -583,7 +582,7 @@ const complianceDetails =
     }, 1500)
     return
   }
-  else if(decentralizationValue == "default") {
+  else if(decentralizationValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for decentralization of the asset",
@@ -598,7 +597,7 @@ const complianceDetails =
     }, 1500)
     return
   }
-  else if(participationValue == "default") {
+  else if(participationValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for the asset's participation network",
@@ -613,7 +612,7 @@ const complianceDetails =
     }, 1500)
   }
 
-  else if(investmentValue == "default") {
+  else if(investmentValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for the asset's investment",
@@ -628,7 +627,7 @@ const complianceDetails =
     }, 1500)
   }
 
-  else if(utilityValue == "default") {
+  else if(utilityValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for the asset's utility case",
@@ -643,7 +642,7 @@ const complianceDetails =
     }, 1500)
   }
 
-  else if(purposeValue == "default") {
+  else if(purposeValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for purpose of creating the asset",
@@ -657,7 +656,7 @@ const complianceDetails =
       });
     }, 1500)
   }
-  else if(controlValue == "default") {
+  else if(controlValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for how the asset is controlled",
@@ -671,7 +670,7 @@ const complianceDetails =
       });
     }, 1500)
   }
-  else if(financialValue == "default") {
+  else if(financialValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for the financial derivatives of the asset",
@@ -686,6 +685,16 @@ const complianceDetails =
     }, 1500)
   }
 
+
+  const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
+  const assetData = result ** (1/8)
+  console.log(assetData)
+
+  
+  dispatch({
+    type: "alert_modal",
+    alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`
+  })
 
     
   //  else if(!(document.getElementById('rewards').value)) {
@@ -732,7 +741,7 @@ const complianceDetails =
   //           alertContent: "Kindly select an active Governance date",
   //         });
   //         return;
-  //   } else if (date === ASAdata) {
+  //   } else if (date ==== ASAdata) {
   //            //get already asadate
  
   //       // console.log(asa)
