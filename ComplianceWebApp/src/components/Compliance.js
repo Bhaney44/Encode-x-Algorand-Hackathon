@@ -639,8 +639,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>How decentralized is the asset?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -650,8 +650,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Do users actively participate in the network?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select  defaultValue={selectDefault} onChange={handleSelectChange}  >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -661,8 +661,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Is the asset intentionally sold as an investment?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option,index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -672,8 +672,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Does the asset have utility?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -683,8 +683,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Does the asset have an intended purpose?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -694,8 +694,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Does the asset give users control in decesion making for a network?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option, index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
@@ -705,8 +705,8 @@ const complianceDetails =
                   <div className="card_cand_hd">
                     <div className="amountToCommit">
                       <p>Does the asset offer financial derivatives?</p>
-                      <select >
-                      <option disabled value="" >Please select one option.</option>
+                      <select defaultValue={selectDefault} onChange={handleSelectChange} >
+                      <option disabled value="default" >Please select one option.</option>
                       {complianceDetails.map((option,index) => (
                         <option key={index} value={option.score}>{option.value}</option>
                       ))}
