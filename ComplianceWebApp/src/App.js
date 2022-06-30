@@ -6,6 +6,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import WalletConfirmation from "./statics/walletConfirmation";
+import FormAlert from "./statics/FormAlert";
 
 const renderLoader = () => <p></p>;
 
@@ -18,6 +19,7 @@ const App = () => {
           <Router>
             <MainPage />
             <WalletConfirmation />
+            <FormAlert/>
             <AlertModal />
           </Router>
         </QueryClientProvider>
