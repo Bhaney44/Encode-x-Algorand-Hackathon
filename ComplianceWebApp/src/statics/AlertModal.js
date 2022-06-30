@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import HashLoader from "react-spinners/HashLoader";
 
 const AlertModal = () => {
   const darkTheme = useSelector((state) => state.status.darkTheme);
@@ -72,9 +73,20 @@ const AlertModal = () => {
                   padding: "15px 10px 15px 2px",
                   textTransform: "uppercase",
                   borderBottom: `2px solid ${darkTheme ? "var(--l1)" : "#222"}`,
+                  display: "flex",
+                  flexDirection: "row"
                 }}
               >
-                <i className="uil uil-exclamation-octagon"></i> Alert
+                <HashLoader 
+                       color={darkTheme ? "#eee" : "#888"}
+                       size={17}
+                       width={17}
+                       speedMultiplier="0.4"
+                />
+
+               <span style={{
+                 marginRight: "5px"
+               }}> Result</span> 
               </p>
               <p
                 style={{
