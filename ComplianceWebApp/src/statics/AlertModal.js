@@ -73,7 +73,7 @@ const AlertModal = () => {
                   margin: "0px 0px 20px",
                   padding: "14px 10px 7px 2px",
                   textTransform: "uppercase",
-                  borderBottom: `2px solid ${darkTheme ? "var(--l1)" : "#222"}`,
+                  borderBottom: `2px solid ${darkTheme ? "#eee" : "#222"}`,
                   display: "flex",
                   flexDirection: "row"
                 }}
