@@ -557,9 +557,9 @@ const complianceDetails =
      
   } 
 
-  const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
-  const assetData = console.log(result ** (1/8)) 
-  //  if(utilityValue == "default" || ) {
+  // const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
+  // const assetData = console.log(result ** (1/8)) 
+  //  if(utilityValue == "default" || equityValue == "default" || purposeValue == "default" || decentralizationValue == "default" ) {
   //        dispatch({
   //       type: "alert_modal",
   //       alertContent: ".",
@@ -568,13 +568,125 @@ const complianceDetails =
   //  }
 
 
-  // else if(!(document.getElementById('governance').value)) {
-  //   dispatch({
-  //     type: "alert_modal",
-  //     alertContent: "You didn't enter governance name.",
-  //   });
-  //   return;
-  // }
+  else if(equityValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for equity interest..",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+    return
+  }
+  else if(decentralizationValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for decentralization of the asset",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+    return
+  }
+  else if(participationValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for the asset's participation network",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+
+  else if(investmentValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for the asset's investment",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+
+  else if(utilityValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for the asset's utility case",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+
+  else if(purposeValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for purpose of creating the asset",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+  else if(controlValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for how the asset is controlled",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+  else if(financialValue == "default") {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Select an option for the financial derivatives of the asset",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  }
+
+
     
   //  else if(!(document.getElementById('rewards').value)) {
   //     dispatch({
