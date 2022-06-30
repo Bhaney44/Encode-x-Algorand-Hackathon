@@ -5,6 +5,7 @@ import AlertModal from "./statics/AlertModal";
 import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import WalletConfirmation from "./statics/walletConfirmation";
 
 const renderLoader = () => <p></p>;
 
@@ -16,6 +17,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <Router>
             <MainPage />
+            <WalletConfirmation />
             <AlertModal />
           </Router>
         </QueryClientProvider>
