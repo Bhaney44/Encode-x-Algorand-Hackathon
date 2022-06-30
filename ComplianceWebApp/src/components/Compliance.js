@@ -688,12 +688,14 @@ const complianceDetails =
 
   const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
   const assetData = result ** (1/8)
+  const percentage = assetData/1 * 100
   console.log(assetData)
 
   
   dispatch({
     type: "alert_modal",
-    alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`
+    alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
+    percentage: percentage.toFixed(3)
   })
 
     
