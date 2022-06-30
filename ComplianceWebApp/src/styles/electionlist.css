@@ -185,8 +185,8 @@
   display: flex;
   width: 100%;
   overflow: hidden;
-  align-items: center;
-  flex-direction: row;
+  /* align-items: center; */
+  /* flex-direction: row; */
   margin: 7px 0px 10px;
   flex-direction: column;
   /* padding: 10px; */
@@ -194,6 +194,8 @@
 
 .amountToCommit p {
   /* margin-right: 20px; */
+  font-size: 13px;
+  color: rgb(57, 129, 198);
   padding: 10px;
 }
 .max {
