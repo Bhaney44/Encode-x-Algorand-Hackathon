@@ -13,6 +13,8 @@ import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
 import '../styles/landing.css'
 
+import { PeraWalletConnect } from "@perawallet/connect";
+
 
 const TopNavigationBar = ({ darkTheme, NavLink }) => {
   const dispatch = useDispatch();
@@ -36,9 +38,15 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
     localStorage.removeItem("addresses");
     localStorage.removeItem("wallet-type");
     localStorage.removeItem("walletconnect");
+     disconnectPeraWalletSession()
     window.location.reload();
     console.log("data");
   };
+
+  const disconnectPeraWalletSession = () => {
+    const perawallet = new PeraWalletConnect
+    perawallet.disconnect()
+  }
 
   const setMode = () => {
     if (!darkTheme) {
@@ -176,6 +184,32 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
       }
     });
   };
+
+  const peraWallet = () => {
+    const peraWallet = new PeraWalletConnect();
+
+    peraWallet.connect().then((newAccounts) => {
+      //    // Setup the disconnect event listener
+      // peraWallet.connector?.on("disconnect", peraWallet.disconnect());
+      const address = newAccounts[0];
+
+      localStorage.setItem("wallet-type", "walletconnect");
+      localStorage.setItem("address", address);
+      localStorage.setItem("addresses", newAccounts);
+
+      window.location.reload();
+    })
+
+    peraWallet.reconnectSession().then((accounts) => {
+      if(accounts.length) {
+        localStorage.setItem("wallet-type", "walletconnect");
+        localStorage.setItem("address", accounts[0]);
+        localStorage.setItem("addresses", accounts);
+        window.location.reload();
+      }
+     
+    })
+  }
 
   const algoSignerConnect = async () => {
     try {
@@ -341,7 +375,7 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
                   </p>
                 </div>
 
-                <div className="dropDownConnect_item" onClick={connectWallet}>
+                <div className="dropDownConnect_item" onClick={peraWallet}>
                   <div className="dropDownConnect_img">
                     <img
                       src="https://i.postimg.cc/QdXmHSYZ/pera.png"
