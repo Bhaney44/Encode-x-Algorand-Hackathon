@@ -641,7 +641,7 @@ const complianceDetails =
 
       const suggestedParams = await algodClient.getTransactionParams().do();
       const enc = new TextEncoder();
-      const note = enc.encode("Hello World");
+      const note = enc.encode(`Asset Compliance score is ${assetData}`);
 
     
     const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
@@ -649,7 +649,7 @@ const complianceDetails =
         to: ComplianceAddress,
         amount: minimumChoice,
         assetIndex: ASSET_ID,
-        // note : note,
+        note : note,
         suggestedParams,
       });
 
@@ -666,13 +666,13 @@ const complianceDetails =
      if(walletType === "my-algo") {
 
       const signedTxn = await myAlgoWallet.signTransaction(txn.toByte());
-    const resp=  await algodClient.sendRawTransaction(signedTxn.blob).do();
-     console.log(resp);
+    const {txId}=  await algodClient.sendRawTransaction(signedTxn.blob).do();
 
      dispatch({
       type: "alert_modal",
       alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
-      percentage: percentage.toFixed(3)
+      percentage: percentage.toFixed(3),
+      txId : txId
     })
 
      } else if(walletType === "algosigner") {
@@ -680,16 +680,17 @@ const complianceDetails =
       const signedTxn = await window.AlgoSigner.signTxn([
         { txn: window.AlgoSigner.encoding.msgpackToBase64(txn.toByte()) },
       ]);
-    const resp =  await algodClient
+    const {txId}=  await algodClient
         .sendRawTransaction(
           window.AlgoSigner.encoding.base64ToMsgpack(signedTxn[0].blob)
         )
         .do();
-        console.log(resp)
+
         dispatch({
           type: "alert_modal",
           alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
-          percentage: percentage.toFixed(3)
+          percentage: percentage.toFixed(3),
+          txId : txId
         })  
 
      } else if(walletType === "walletconnect") {
@@ -697,13 +698,14 @@ const complianceDetails =
        console.log(optInTxn)
 
        const signedTxn = await perawallet.signTransaction([optInTxn])
-      //  const { txId } = await algodClient.sendRawTransaction(signedTxn).do();
+       const { txId } = await algodClient.sendRawTransaction(signedTxn).do();
       //  console.log(signedTxn);
 
        dispatch({
         type: "alert_modal",
         alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
-        percentage: percentage.toFixed(3)
+        percentage: percentage.toFixed(3),
+        txId : txId
       })  
 
      }
