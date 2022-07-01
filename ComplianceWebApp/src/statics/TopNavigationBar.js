@@ -7,11 +7,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import complianceLogo from '../assets/dark-compliance.png'
 import corect from './correct.png';
 import {Link} from 'react-router-dom';
-// import ScrollTextLand from "../components/ScrollTextLand";
 
-import WalletConnect from "@walletconnect/client";
-import QRCodeModal from "algorand-walletconnect-qrcode-modal";
-import '../styles/landing.css'
 
 import { PeraWalletConnect } from "@perawallet/connect";
 
@@ -60,7 +56,7 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
     {
       "X-API-Key": "z6H94GE3sI8w100S7MyY92YMK5WIPAmD6YksRDsC"
     },
-    "https://mainnet-algorand.api.purestake.io/ps2",
+    "https://testnet-algorand.api.purestake.io/ps2",
     ""
   );
 
@@ -130,57 +126,6 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
     }
   };
 
-  const connectWallet = () => {
-    const connector = new WalletConnect({
-      bridge: "https://bridge.walletconnect.org",
-      qrcodeModal: QRCodeModal,
-    });
-
-    if (!connector.connected) {
-      connector.createSession();
-    }
-
-    connector.on("connect", (error, payload) => {
-      if (error) {
-        throw error;
-        
-      }
-
-      const { accounts } = payload.params[0];
-
-      const addresses = accounts.map((item) => item);
-      const address = accounts[0];
-
-      localStorage.setItem("wallet-type", "walletconnect");
-      localStorage.setItem("address", address);
-      localStorage.setItem("addresses", addresses);
-
-      window.location.reload();
-    });
-
-    connector.on("session_update", (error, payload) => {
-      if (error) {
-        throw error;
-      }
-
-      const { accounts } = payload.params[0];
-
-      const addresses = accounts.map((item) => item);
-      const address = accounts[0];
-
-      localStorage.setItem("wallet-type", "walletconnect");
-      localStorage.setItem("address", address);
-      localStorage.setItem("addresses", addresses);
-
-      window.location.reload();
-    });
-
-    connector.on("disconnect", (error, payload) => {
-      if (error) {
-        console.log(error);
-      }
-    });
-  };
 
   const peraWallet = async () => {
 
@@ -192,9 +137,6 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
 
     window.location.reload();
   
-  
-
-    
 
     
   }
