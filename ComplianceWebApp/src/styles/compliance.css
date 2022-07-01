@@ -227,6 +227,7 @@
 }
 
 .amountToCommit select {
+  color: var(--wht);
   flex: 1;
   font-size: 15px;
   padding: 7px 12px;
@@ -514,6 +515,10 @@ font-size: 10px !important;
 .conditions {
   margin-right: 66px;
   margin-left: 12px;
+  color: var(--wht);
+}
+input[type="checkbox"] {
+  filter: sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%) contrast(300%);
 }
 
 @media screen and (max-width: 400px) {
