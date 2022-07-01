@@ -6,7 +6,7 @@ const AlertModal = () => {
 
   const dispatch = useDispatch();
 
-  const { openModal, modalContent,percentage } = useSelector(
+  const { openModal, modalContent,percentage ,txId} = useSelector(
     (state) => state.status.alertModal
   );
 
@@ -135,7 +135,7 @@ const AlertModal = () => {
               </p>
 
               <a
-               href=""
+               href={`https://testnet.algoexplorer.io/tx/${txId}`}
                style={{
                 opacity: 0.7,
                 lineHeight: "25px",
