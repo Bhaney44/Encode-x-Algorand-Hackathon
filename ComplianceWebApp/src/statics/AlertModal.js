@@ -114,7 +114,7 @@ const AlertModal = () => {
               }}> 
                 Percentage : <span
                   style={{
-                    color: percentage < 30 ? "red" : "#09b109"
+                    color: percentage < 50 ? "red" : "#09b109"
                   }}       
                 >
                   {percentage}% 

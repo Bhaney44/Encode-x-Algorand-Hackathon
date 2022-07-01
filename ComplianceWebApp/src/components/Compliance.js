@@ -539,7 +539,83 @@ const complianceDetails =
   //   }
   // };
 
+  const craftComplianceScoreToBlockchain = async () => {
+   const suggestedParams = await algodClient.getTransactionParams().do();
+
+    const address = !!isThereAddress && isThereAddress 
+
+      const myAccountInfo = await algodClient
+        .accountInformation(
+          !!isThereAddress && isThereAddress 
+        )
+        .do();
+
+      // get choice balance of the ASA
+      const balance = myAccountInfo.assets
+        ? myAccountInfo.assets.find(
+            (element) => element["asset-id"] === ASSET_ID
+          ).amount / 100
+        : 0;
+
+     //get algo balance of the ASA
+      const algoBalance = myAccountInfo.amount/1000000;
+
+      // check if the voter address has Choice
+      const containsChoice = myAccountInfo.assets
+        ? myAccountInfo.assets.some(
+            (element) => element["asset-id"] === ASSET_ID
+          )
+        : false;
+             
+      // if the address has no ASAs
+      if (myAccountInfo.assets.length === 0) {
+        dispatch({
+          type: "form_alert",
+          alertContent: "You need to opt-in to Choice Coin in your Algorand Wallet.",
+        });
+        setTimeout(() => {
+          dispatch({
+            type: "close_alert",
+          });
+        }, 1500)
+        return
+      }
+
+     //if the address do not contain choice ASA
+      if (!containsChoice) {
+        dispatch({
+          type: "form_alert",
+          alertContent: "You need to opt-in to Choice Coin in your Algorand Wallet.",
+        });
+        setTimeout(() => {
+          dispatch({
+            type: "close_alert",
+          });
+        }, 1500)
+        return;
+      }
+
+      if(balance < 5 || algoBalance < 0.001) {
+        dispatch({
+          type: "form_alert",
+          alertContent: "You do not have the minimum amount to process compliance score.",
+        });
+        setTimeout(() => {
+          dispatch({
+            type: "close_alert",
+          });
+        }, 1500)
+        return;
+      }
+
+
+  }
+
   const calculate = () => {
+
+    dispatch({
+      type: "close_wallet",
+    });
 
   //   if(!isThereAddress) {
   //     dispatch({
@@ -676,6 +752,19 @@ const complianceDetails =
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for the financial derivatives of the asset",
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "close_alert",
+      });
+      dispatch({
+        type: "close_wallet",
+      });
+    }, 1500)
+  } else if(!minimumChoice) {
+    dispatch({
+      type: "form_alert",
+      alertContent: "Accept terms and conditions to calculate compliance score",
     });
     setTimeout(() => {
       dispatch({
