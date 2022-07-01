@@ -7,11 +7,14 @@ import MyAlgoConnect from "@randlabs/myalgo-connect";
 import { useDispatch } from "react-redux";
 import { formatJsonRpcRequest } from "@json-rpc-tools/utils";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
-import { ASSET_ID} from "../constants";
-import { useState } from "react";
+import { ASSET_ID, ComplianceAddress} from "../constants";
+import { useEffect, useState } from "react";
 // import BottomNavigationBar from "../statics/BottomNavigationBar";
 // import moment from "moment";
 // import DatePicker from "react-datepicker";
+import { PeraWalletConnect } from "@perawallet/connect";
+
+const perawallet = new PeraWalletConnect()
 
 const Compliance = () => {
   const dispatch = useDispatch();
@@ -19,7 +22,7 @@ const Compliance = () => {
  const isThereAddress = localStorage.getItem("address");
 
   const algod_token = {
-    "X-API-Key": ""
+    "X-API-Key": "AE6Ave7wNH8bKB1SiwutOakoTHreBlWZ9TMKElZs"
   }
   const algod_address = "https://testnet-algorand.api.purestake.io/ps2";
   const headers = "";
@@ -36,6 +39,27 @@ const Compliance = () => {
   const [controlValue, setControlValue] = useState("default")
   const [financialValue, setFinancialValue] = useState("default")
   // const [selectDefault, setSelectDefault] = useState("default")
+
+  useEffect(() => {
+    perawallet
+    .reconnectSession()
+    .then((accounts) => {
+      if (accounts.length) {
+        localStorage.setItem("wallet-type", "walletconnect");
+            localStorage.setItem("address", accounts[0]);
+            localStorage.setItem("addresses", accounts)
+
+      }
+
+      perawallet.connector?.on("disconnect", () => {
+        localStorage.removeItem("address");
+        localStorage.removeItem("addresses");
+        localStorage.removeItem("wallet-type");
+        localStorage.removeItem("walletconnect");
+      });
+    })
+    .catch((e) => console.log(e));
+  }, [])
 
   const [minimumChoice, setMinimumChoice] = useState(undefined);
 
@@ -540,7 +564,10 @@ const complianceDetails =
   // };
 
   const craftComplianceScoreToBlockchain = async () => {
-   const suggestedParams = await algodClient.getTransactionParams().do();
+
+    const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
+    const assetData = result ** (1/8)
+    const percentage = assetData/1 * 100
 
     const address = !!isThereAddress && isThereAddress 
 
@@ -556,6 +583,9 @@ const complianceDetails =
             (element) => element["asset-id"] === ASSET_ID
           ).amount / 100
         : 0;
+
+        // console.log(balance, "bal")
+        
 
      //get algo balance of the ASA
       const algoBalance = myAccountInfo.amount/1000000;
@@ -595,7 +625,7 @@ const complianceDetails =
         return;
       }
 
-      if(balance < 5 || algoBalance < 0.001) {
+      if(balance < 1 || algoBalance < 0.001) {
         dispatch({
           type: "form_alert",
           alertContent: "You do not have the minimum amount to process compliance score.",
@@ -607,7 +637,107 @@ const complianceDetails =
         }, 1500)
         return;
       }
+   
 
+      const suggestedParams = await algodClient.getTransactionParams().do();
+      const enc = new TextEncoder();
+      const note = enc.encode("Hello World");
+
+    
+    const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+        from: address,
+        to: ComplianceAddress,
+        amount: minimumChoice,
+        assetIndex: ASSET_ID,
+        // note : note,
+        suggestedParams,
+      });
+
+    
+     
+    let continueExecution = true;
+
+
+    try {
+
+      const myAlgoWallet = new MyAlgoConnect({ shouldSelectOneAccount: false });
+
+      const peraWallet = new PeraWalletConnect();
+     if(walletType === "my-algo") {
+
+      const signedTxn = await myAlgoWallet.signTransaction(txn.toByte());
+    const resp=  await algodClient.sendRawTransaction(signedTxn.blob).do();
+     console.log(resp);
+
+     dispatch({
+      type: "alert_modal",
+      alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
+      percentage: percentage.toFixed(3)
+    })
+
+     } else if(walletType === "algosigner") {
+
+      const signedTxn = await window.AlgoSigner.signTxn([
+        { txn: window.AlgoSigner.encoding.msgpackToBase64(txn.toByte()) },
+      ]);
+    const resp =  await algodClient
+        .sendRawTransaction(
+          window.AlgoSigner.encoding.base64ToMsgpack(signedTxn[0].blob)
+        )
+        .do();
+        console.log(resp)
+        dispatch({
+          type: "alert_modal",
+          alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
+          percentage: percentage.toFixed(3)
+        })  
+
+     } else if(walletType === "walletconnect") {
+       const optInTxn = [{txn : txn, signers: [address]}]
+       console.log(optInTxn)
+
+       const signedTxn = await perawallet.signTransaction([optInTxn])
+      //  const { txId } = await algodClient.sendRawTransaction(signedTxn).do();
+      //  console.log(signedTxn);
+
+       dispatch({
+        type: "alert_modal",
+        alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
+        percentage: percentage.toFixed(3)
+      })  
+
+     }
+    } catch(error) {
+      console.log(error)
+      if (error.message === "Can not open popup window - blocked") {
+        dispatch({
+          type: "form_alert",
+          alertContent: "Pop Up windows blocked by your browser. Enable pop ups to continue.",
+        });
+        setTimeout(() => {
+          dispatch({
+            type: "close_alert",
+          });
+          dispatch({
+            type: "close_wallet",
+          });
+        }, 1500)
+      } else {
+        dispatch({
+          type: "form_alert",
+          alertContent: "Error occured processing transaction",
+        });
+        setTimeout(() => {
+          dispatch({
+            type: "close_alert",
+          });
+          dispatch({
+            type: "close_wallet",
+          });
+        }, 1500)
+      }
+      continueExecution = false;
+    }
 
   }
 
@@ -617,23 +747,23 @@ const complianceDetails =
       type: "close_wallet",
     });
 
-  //   if(!isThereAddress) {
-  //     dispatch({
-  //       type: "form_alert",
-  //       alertContent: "Connect wallet to calculate compliance score.",
-  //     });
+    if(!isThereAddress) {
+      dispatch({
+        type: "form_alert",
+        alertContent: "Connect wallet to calculate compliance score.",
+      })
 
-  //     setTimeout(() => {
-  //       dispatch({
-  //         type: "close_alert",
-  //       });
-  //       dispatch({
-  //         type: "close_wallet",
-  //       });
-  //     }, 1500)
-  //     return
+      setTimeout(() => {
+        dispatch({
+          type: "close_alert",
+        });
+        dispatch({
+          type: "close_wallet",
+        });
+      }, 1500)
+      return
      
-  // } 
+  } 
 
   
   //  if(utilityValue == "default" || equityValue == "default" || purposeValue == "default" || decentralizationValue == "default" ) {
@@ -645,7 +775,7 @@ const complianceDetails =
   //  }
 
 
- if(equityValue === "default") {
+ else if(equityValue === "default") {
     dispatch({
       type: "form_alert",
       alertContent: "Select an option for equity interest..",
@@ -774,20 +904,23 @@ const complianceDetails =
         type: "close_wallet",
       });
     }, 1500)
+  } else {
+    craftComplianceScoreToBlockchain()
   }
 
+ 
 
-  const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
-  const assetData = result ** (1/8)
-  const percentage = assetData/1 * 100
-  console.log(assetData)
+  // const result = equityValue * decentralizationValue * participationValue * investmentValue * utilityValue * purposeValue * controlValue * financialValue
+  // const assetData = result ** (1/8)
+  // const percentage = assetData/1 * 100
+  // console.log(assetData)
 
   
-  dispatch({
-    type: "alert_modal",
-    alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
-    percentage: percentage.toFixed(3)
-  })
+  // dispatch({
+  //   type: "alert_modal",
+  //   alertContent: `Asset Compliance Score is ${assetData.toFixed(4)}`,
+  //   percentage: percentage.toFixed(3)
+  // })
 
     
   //  else if(!(document.getElementById('rewards').value)) {
@@ -994,7 +1127,7 @@ const complianceDetails =
                 className="checkbox"
                 type="checkbox"
                 value={minimumChoice}
-                onClick={() => setMinimumChoice(5)}
+                onClick={() => setMinimumChoice(1)}
               />
                <span className="conditions" style={{fontSize : "13px"}}>Accept 5<span><img src="https://i.postimg.cc/mDtpdjqh/logo.png" style={{width : '13px', marginTop : '0px', marginLeft : '2px'}} alt="logo"/> </span> is required to calculate asset compliance score</span>
               </p>
