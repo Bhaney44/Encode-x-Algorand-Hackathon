@@ -576,9 +576,9 @@ const complianceDetails =
                 className="checkbox"
                 type="checkbox"
                 value={minimumChoice}
-                onClick={() => setMinimumChoice(1)}
+                onClick={() => setMinimumChoice(2)}
               />
-               <span className="conditions" style={{fontSize : "13px"}}>Accept 5<span><img src="https://i.postimg.cc/mDtpdjqh/logo.png" style={{width : '13px', marginTop : '0px', marginLeft : '2px'}} alt="logo"/> </span> is required to calculate asset compliance score</span>
+               <span className="conditions" style={{fontSize : "13px"}}>Accept 2<span><img src="https://i.postimg.cc/mDtpdjqh/logo.png" style={{width : '13px', marginTop : '0px', marginLeft : '0px'}} alt="logo"/> </span> is required to calculate asset compliance score</span>
               </p>
             </div>
 
@@ -586,7 +586,7 @@ const complianceDetails =
 
                     <div className="rec_vote_cont">
                       <button
-                        className="record_vote"
+                        className="record_vote button"
                         onClick={() => {
                           calculate();
                         }}

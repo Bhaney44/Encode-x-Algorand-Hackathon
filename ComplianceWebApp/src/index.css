@@ -1,5 +1,10 @@
 @import "./styles/reset.css";
 @import url('https://fonts.googleapis.com/css2?family=Anybody&display=swap');
+@font-face {
+  font-family: "Light";   /*Can be any text*/
+  src: local("Proxima Nova Font"),
+    url("./fonts/Proxima Nova Font.otf") format("truetype");
+}
 
 html,
 body {
@@ -856,7 +861,7 @@ iframe {
 }
 
 .ft_sm {
-  font-family: 'Anybody', cursive !important;
+  font-family: "Light" !important; 
   bottom: 16px !important;
   right: 20px !important;
   width: 13vw !important;
@@ -872,7 +877,7 @@ iframe {
   font-family: 'Anybody', cursive !important;
 }
 .card_elt_desc {
-  font-family: 'Anybody', cursive !important;
+  font-family: "Light"; 
 }
 
 /* @media screen and (max-width: 500px) {

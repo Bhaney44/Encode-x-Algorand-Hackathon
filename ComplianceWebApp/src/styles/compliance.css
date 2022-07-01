@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@500&display=swap');
 
 .ptt_elt {
   width: 100%;
@@ -23,7 +23,7 @@
   font-size: 15px;
   color: var(--wht);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   padding: 25px 0px 16px;
 
   position: -webkit-sticky;
@@ -37,12 +37,15 @@
   margin-bottom: 30px;
 }
 .ptt_hd p {
+  font-family: 'Kantumruy Pro', sans-serif;
   opacity: 0.7;
+  font-weight: 800;
 }
 
 .light_theme .ptt_hd p {
+  font-family: 'Kantumruy Pro', sans-serif;
   opacity: 1;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 /*  */
@@ -114,10 +117,11 @@
 }
 .card_elt_tit {
   margin-left: 20px;
+  font-family: 'Kantumruy Pro', sans-serif !important;
 
   color: var(--wht);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   padding: 17px 0px;
   padding-left: 5px;
   letter-spacing: 0.04rem;
@@ -204,6 +208,7 @@
 .check {
   display: flex;
   margin-top: 12px;
+  font-family: "Light"; 
   margin-left: 15px;
 }
 
@@ -227,12 +232,13 @@
 }
 
 .amountToCommit select {
+  font-family: "Light" !important; 
   color: var(--wht);
   flex: 1;
   font-size: 15px;
   padding: 7px 12px;
   border-radius: 12px;
-  width: 75%;
+  width: 84%;
   background: transparent;
   border: 1px solid var(--bord-dark);
 }
@@ -511,11 +517,18 @@ input:invalid {
 margin-right: -13px !important;
 font-size: 10px !important;
 }
+.button:hover, .button:active{
+  background: #1736a7;
+}
+.button:active {
+  transform: translateY(-4px);
+}
 
 .conditions {
   margin-right: 66px;
   margin-left: 12px;
   color: var(--wht);
+  font-family: "Light"; 
 }
 input[type="checkbox"] {
   filter: sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%) contrast(300%);
