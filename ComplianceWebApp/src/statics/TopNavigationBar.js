@@ -15,6 +15,7 @@ import '../styles/landing.css'
 
 import { PeraWalletConnect } from "@perawallet/connect";
 
+const perawallet = new PeraWalletConnect()
 
 const TopNavigationBar = ({ darkTheme, NavLink }) => {
   const dispatch = useDispatch();
@@ -34,19 +35,14 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
     }
 
   const LogOut = () => {
+    perawallet.disconnect()
     localStorage.removeItem("address");
     localStorage.removeItem("addresses");
     localStorage.removeItem("wallet-type");
     localStorage.removeItem("walletconnect");
-     disconnectPeraWalletSession()
     window.location.reload();
     console.log("data");
   };
-
-  const disconnectPeraWalletSession = () => {
-    const perawallet = new PeraWalletConnect
-    perawallet.disconnect()
-  }
 
   const setMode = () => {
     if (!darkTheme) {
@@ -75,6 +71,7 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
   
 
   useEffect(() => {
+
     addresses?.forEach(async (item) => {
       const myAccountInfo = await algodClient.accountInformation(item).do();
       const bal =
@@ -185,30 +182,21 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
     });
   };
 
-  const peraWallet = () => {
-    const peraWallet = new PeraWalletConnect();
+  const peraWallet = async () => {
 
-    peraWallet.connect().then((newAccounts) => {
-      //    // Setup the disconnect event listener
-      // peraWallet.connector?.on("disconnect", peraWallet.disconnect());
-      const address = newAccounts[0];
+   const newAccounts = await perawallet.connect()
+    localStorage.setItem("wallet-type", "walletconnect");
+    localStorage.setItem("address", newAccounts[0]);
+    localStorage.setItem("addresses", newAccounts);
 
-      localStorage.setItem("wallet-type", "walletconnect");
-      localStorage.setItem("address", address);
-      localStorage.setItem("addresses", newAccounts);
 
-      window.location.reload();
-    })
+    window.location.reload();
+  
+  
 
-    peraWallet.reconnectSession().then((accounts) => {
-      if(accounts.length) {
-        localStorage.setItem("wallet-type", "walletconnect");
-        localStorage.setItem("address", accounts[0]);
-        localStorage.setItem("addresses", accounts);
-        window.location.reload();
-      }
-     
-    })
+    
+
+    
   }
 
   const algoSignerConnect = async () => {
@@ -220,10 +208,10 @@ const TopNavigationBar = ({ darkTheme, NavLink }) => {
         );
       } else {
         await window.AlgoSigner.connect({
-          ledger: "MainNet",
+          ledger: "TestNet",
         });
         const accounts = await window.AlgoSigner.accounts({
-          ledger: "MainNet",
+          ledger: "TestNet",
         });
 
         const addresses = accounts.map((item) => item?.address);
