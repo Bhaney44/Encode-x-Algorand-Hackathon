@@ -1,9 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import ClockLoader from "react-spinners/ClockLoader";
 
 const FormAlert = () => {
     const darkTheme = useSelector((state) => state.status.darkTheme);
-    // const dispatch = useDispatch()
     const { formAlert, alertContent } = useSelector(
       (state) => state.status.formAlert
     );
