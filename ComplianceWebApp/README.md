@@ -28,18 +28,3 @@ $ npm run dev
 
 * [Apache](https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon/blob/main/LICENSE)
 
-# File Tree
-
-_Folders_
-- governance-rewards 
-- public
-- src
-
-_files_
-- .DS_Store
-- .gitignore
-- License.txt
-- README.md
-- package-lock.json
-- package.json
-
