@@ -1,5 +1,5 @@
-# Encode-x-ATX-DAO-Austin-Hackathon
-This is a Repository for the [Encode x ATX DAO Austin Hackathon](https://www.encode.club/austin-hackathon). Our project is a compliance sutomation software for digital assets on [Algorand](https://www.algorand.com/). The project focus is securities compliance for DeFi.
+# Encode-x-Algorand-Hackathon
+This is a Repository for the [Encode x Algorand Hackathon](https://www.encode.club/algorand-hack). Our project is a compliance sutomation software for digital assets on [Algorand](https://www.algorand.com/). The project focus is securities compliance for DeFi.
 
 [Application Demo](https://www.youtube.com/watch?v=95YdWmd5RIQ)
 
