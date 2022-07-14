@@ -6,7 +6,7 @@ This is a repository for DeFi compliance software.
 * git clone the repository
 
 ```
-  $ git clone https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon.git
+  $ git clone https://github.com/Bhaney44/Encode-x-Algorand-Hackathon.git
 ```
 * go into `ComplianceWebApp` directory
 
@@ -26,5 +26,5 @@ $ npm run dev
 
 ## LICENSE
 
-* [Apache](https://github.com/Bhaney44/Encode-x-ATX-DAO-Austin-Hackathon/blob/main/LICENSE)
+* [Apache](https://github.com/Bhaney44/Encode-x-Algorand-Hackathon/blob/main/LICENSE)
 
